@@ -3,7 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Mission6.Models;
 
 namespace Mission6.Controllers
-{
+{   
+    //make routes to the pages
     public class HomeController : Controller
     {
        private Class1 _class1;

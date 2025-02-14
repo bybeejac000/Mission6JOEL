@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 namespace Mission6.Models
-{
+{   //make the variable for the form
     public class Form
     {
         [Key]
@@ -13,5 +13,7 @@ namespace Mission6.Models
         public string edited { get; set; }
         public string lentTo { get; set; }
         public string notes { get; set; }
+        public string director { get; set; }
+
     }
 }
