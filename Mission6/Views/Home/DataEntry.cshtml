@@ -1,0 +1,168 @@
+﻿@model Form
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Collection Entry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .button {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .button:hover {
+                background-color: #555;
+            }
+
+        .required {
+            color: red;
+        }
+
+        .note {
+            font-size: 12px;
+            color: gray;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Movie Collection Entry Form</h1>
+    </header>
+
+    <!-- Main Form Section -->
+    <div class="container">
+        <form action="#" method="POST">
+            <!-- Movie Title -->
+            <div class="form-group">
+                <label for="title">Movie Title <span class="required">*</span></label>
+                <input type="text" asp-for="title" id="title" name="title" required>
+            </div>
+
+            <!-- Genre -->
+            <div class="form-group">
+                <label for="genre">Genre <span class="required">*</span></label>
+                <input type="text" asp-for="genre" id="genre" name="genre" required>
+            </div>
+
+            <!-- Year Released -->
+            <div class="form-group">
+                <label for="year">Year Released <span class="required">*</span></label>
+                <input type="number" asp-for="yearReleased" id="year" name="yearReleased" required>
+            </div>
+
+            <!-- Rating -->
+            <div class="form-group">
+                <label for="rating">Rating <span class="required">*</span></label>
+                <select id="rating" asp-for="rating" name="rating" required>
+                    <option value="">Select Rating</option>
+                    <option value="G">G</option>
+                    <option value="PG">PG</option>
+                    <option value="PG-13">PG-13</option>
+                    <option value="R">R</option>
+                </select>
+            </div>
+
+            <!-- Edited -->
+            <div class="form-group">
+                <label for="edited">Edited (Yes/No)</label>
+                <select type="text" id="edited" asp-for="edited" name="edited">
+                    <option value="">Select Rating</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <!-- Lent To -->
+            <div class="form-group">
+                <label for="lentTo">Lent To</label>
+                <input type="text" asp-for="lentTo" id="lentTo" name="lentTo">
+            </div>
+
+            <!-- Notes -->
+            <div class="form-group">
+                <label for="notes">Notes (Max 25 Characters)</label>
+                <textarea id="notes" name="notes" asp-for="notes" maxlength="25"></textarea>
+                <small class="note">Notes should be limited to 25 characters.</small>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group">
+                <button type="submit" class="button">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Movie Collection. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
