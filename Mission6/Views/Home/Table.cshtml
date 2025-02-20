@@ -1,0 +1,31 @@
+﻿@model List<Form>
+
+<table border="1" class="table table-bordered">
+    <thead class="fw-bold">
+        <tr>
+            <td>Title</td>
+            <td>Genre</td>
+            <td>Release Year</td>
+            <td>Rating</td>
+            <td>Edited</td>
+            <td>Lent To</td>
+            <td>Notes</td>
+            <td>Director</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.title</td>
+                <td>@x.genre</td>
+                <td>@x.yearReleased</td>
+                <td>@x.rating</td>
+                <td>@x.edited</td>
+                <td>@x.lentTo</td>
+                <td>@x.notes</td>
+                <td>@x.director</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Mission6.Models;
 
 namespace Mission6.Controllers
@@ -48,6 +49,14 @@ namespace Mission6.Controllers
 
 
             return View("Confirmation");
+        }
+
+        public IActionResult Table()
+        {
+            var data = _class1.Movies
+                .FromSqlRaw("SELECT * FROM MOVIES").ToList();
+
+            return View(data);
         }
         
 
