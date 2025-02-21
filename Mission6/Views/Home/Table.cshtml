@@ -11,11 +11,13 @@
             <td>Lent To</td>
             <td>Notes</td>
             <td>Director</td>
+            <td>Category</td>
             <td>Delete</td>
             <td>Edit</td>
         </tr>
     </thead>
     <tbody>
+        <!--The razor code to fill in the table data-->
         @foreach (var x in Model)
         {
             <tr>
@@ -27,6 +29,7 @@
                 <td>@x.LentTo</td>
                 <td>@x.Notes</td>
                 <td>@x.Director</td>
+                <td>@x.CatForm.CategoryName</td>
                 <td>
                     <form asp-action="Delete" asp-controller="Home" method="POST" asp-route-id="@x.MovieId">
                     <button type="submit">Delete</button>

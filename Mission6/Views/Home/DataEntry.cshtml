@@ -132,11 +132,11 @@
 
             <!-- Edited -->
             <div class="form-group">
-                <label for="edited">Edited (Yes/No) <span class="required">*</span></label>
-                <select type="text" asp-for="Edited" required>
+                <label for="Edited">Edited (Yes/No) <span class="required">*</span></label>
+                <select type="number" asp-for="Edited" required>
                     <option value="">Select Rating</option>
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
                 </select>
             </div>
 
