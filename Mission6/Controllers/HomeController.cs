@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Mission6.Models;
 
 namespace Mission6.Controllers
@@ -37,6 +38,9 @@ namespace Mission6.Controllers
         [HttpGet]
         public IActionResult DataEntry()
         {
+            ViewBag.cats = _class1.Cats
+                .FromSqlRaw("SELECT * FROM Categories").ToList();
+
             return View();
         }
 
@@ -54,11 +58,45 @@ namespace Mission6.Controllers
         public IActionResult Table()
         {
             var data = _class1.Movies
-                .FromSqlRaw("SELECT * FROM MOVIES").ToList();
-
+                .FromSqlRaw("SELECT * FROM Movies").ToList();
+                 
             return View(data);
         }
-        
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            _class1.Movies
+                .Where(m => m.MovieId == id)
+                .ExecuteDelete();
+
+            return RedirectToAction("Table");
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            Form data = _class1.Movies
+                .Single(m => m.MovieId == id);
+
+            ViewBag.cats = _class1.Cats
+                .FromSqlRaw("SELECT * FROM Categories").ToList();
+
+            return View("DataEntry",data);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Form res)
+        {
+            _class1.Movies.Update(res);
+            _class1.SaveChanges();
+
+
+
+            return View("Confirmation");
+        }
+
+
 
 
     }

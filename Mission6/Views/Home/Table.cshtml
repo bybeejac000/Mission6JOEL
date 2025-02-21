@@ -11,20 +11,32 @@
             <td>Lent To</td>
             <td>Notes</td>
             <td>Director</td>
+            <td>Delete</td>
+            <td>Edit</td>
         </tr>
     </thead>
     <tbody>
         @foreach (var x in Model)
         {
             <tr>
-                <td>@x.title</td>
-                <td>@x.genre</td>
-                <td>@x.yearReleased</td>
-                <td>@x.rating</td>
-                <td>@x.edited</td>
-                <td>@x.lentTo</td>
-                <td>@x.notes</td>
-                <td>@x.director</td>
+                <td>@x.Title</td>
+                <td>@x.Year</td>
+                <td>@x.Director</td>
+                <td>@x.Rating</td>
+                <td>@x.Edited</td>
+                <td>@x.LentTo</td>
+                <td>@x.Notes</td>
+                <td>@x.Director</td>
+                <td>
+                    <form asp-action="Delete" asp-controller="Home" method="POST" asp-route-id="@x.MovieId">
+                    <button type="submit">Delete</button>
+                    </form>
+                </td>
+                <td>
+                    <form asp-action="Edit" asp-controller="Home" method="GET" asp-route-id="@x.MovieId">
+                        <button type="submit">Edit</button>
+                    </form>
+                </td>
             </tr>
         }
     </tbody>

@@ -1,5 +1,4 @@
 ﻿@model Form
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -99,33 +98,30 @@
     <!-- Main Form Section -->
     <div class="container">
         <form action="#" method="POST">
+            
+            <input type="hidden" asp-for="MovieId" />
+
             <!-- Movie Title -->
             <div class="form-group">
                 <label for="title">Movie Title <span class="required">*</span></label>
-                <input type="text" asp-for="title" id="title" name="title" required>
-            </div>
-
-            <!-- Genre -->
-            <div class="form-group">
-                <label for="genre">Genre <span class="required">*</span></label>
-                <input type="text" asp-for="genre" id="genre" name="genre" required>
+                <input type="text" asp-for="Title" required>
             </div>
 
             <div class="form-group">
-                <label for="director">Director<span class="required">*</span></label>
-                <input type="text" asp-for="director" id="director" name="director" required>
+                <label for="director">Director</label>
+                <input type="text" asp-for="Director">
             </div>
 
             <!-- Year Released -->
             <div class="form-group">
                 <label for="year">Year Released <span class="required">*</span></label>
-                <input type="number" asp-for="yearReleased" id="year" name="yearReleased" required>
+                <input type="number" asp-for="Year" min="1888" required>
             </div>
 
             <!-- Rating -->
             <div class="form-group">
-                <label for="rating">Rating <span class="required">*</span></label>
-                <select id="rating" asp-for="rating" name="rating" required>
+                <label for="rating">Rating</label>
+                <select asp-for="Rating" >
                     <option value="">Select Rating</option>
                     <option value="G">G</option>
                     <option value="PG">PG</option>
@@ -136,24 +132,44 @@
 
             <!-- Edited -->
             <div class="form-group">
-                <label for="edited">Edited (Yes/No)</label>
-                <select type="text" id="edited" asp-for="edited" name="edited">
+                <label for="edited">Edited (Yes/No) <span class="required">*</span></label>
+                <select type="text" asp-for="Edited" required>
                     <option value="">Select Rating</option>
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
                 </select>
             </div>
 
+            <div class="form-group">
+                <label for="edited">Copied to Plex? (Yes/No) <span class="required">*</span></label>
+                <select type="number" asp-for="CopiedToPlex" required>
+                    <option value="">Select Rating</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="edited">Category<span class="required">*</span></label>
+                <select type="number" asp-for="CategoryId" required>
+                    <option value="">Select Rating</option>
+                    @foreach(var x in ViewBag.cats)
+                    {
+                        <option value="@x.CategoryId">@x.CategoryName</option>
+                    }
+                </select>
+            </div>
+
             <!-- Lent To -->
             <div class="form-group">
                 <label for="lentTo">Lent To</label>
-                <input type="text" asp-for="lentTo" id="lentTo" name="lentTo">
+                <input type="text" asp-for="LentTo">
             </div>
 
             <!-- Notes -->
             <div class="form-group">
                 <label for="notes">Notes (Max 25 Characters)</label>
-                <textarea id="notes" name="notes" asp-for="notes" maxlength="25"></textarea>
+                <textarea asp-for="Notes" maxlength="25"></textarea>
                 <small class="note">Notes should be limited to 25 characters.</small>
             </div>
 

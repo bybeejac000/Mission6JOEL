@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Mission6.Models
 {   //make the variable for the form
@@ -6,14 +7,18 @@ namespace Mission6.Models
     {
         [Key]
         [Required]
-        public string title { get; set; }
-        public string genre { get; set; }
-        public int yearReleased { get; set; }
-        public string rating { get; set; }
-        public string edited { get; set; }
-        public string lentTo { get; set; }
-        public string notes { get; set; }
-        public string director { get; set; }
+        public int MovieId { get; set; }
+        [ForeignKey("CatForm")]
+        public int CategoryId { get; set; }
+        public CatForm CatForm { get; set; }
+        public string Title { get; set; }
+        public int Year { get; set; }
+        public string? Director{ get; set; }
+        public string? Rating { get; set; }
+        public int Edited { get; set; }
+        public string? LentTo{ get; set; }
+        public int CopiedToPlex { get; set; }
+        public string? Notes { get; set; }
 
     }
 }

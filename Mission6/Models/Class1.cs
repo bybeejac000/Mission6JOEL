@@ -8,5 +8,6 @@ namespace Mission6.Models
         { }
 
         public DbSet<Form> Movies { get; set; }
+        public DbSet<CatForm> Cats { get; set; }
     }
 }
